@@ -10,19 +10,41 @@ services:
       - spring-mysqldb:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
-
+    networks:
+      - backend
+      
   spring-java-app:
     build: 
       context: ./dockerization/app
     image: celeguim/spring-javaapp
     container_name: spring-javaapp
     ports:
-      - "3306:3306"
+      - "8080:8080"
     volumes:
       - spring-javaapp:/usr/local/tomcat/webapps/
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - frontend
+      - backend
+
+  spring-web-app:
+    build: 
+      context: ./dockerization/web
+    image: celeguim/spring-webapp
+    container_name: spring-webapp
+    ports:
+      - "80:80"
+    volumes:
+      - spring-webapp:/etc/nginx/conf.d/
+    networks:
+      - frontend
 
 volumes:
   spring-mysqldb: {}
   spring-javaapp: {}
+  spring-webapp: {}
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
