@@ -1,0 +1,28 @@
+services:
+  spring-mysqldb:
+    build: 
+      context: ./dockerization/mysql
+    image: celeguim/spring-mysqldb
+    container_name: spring-mysqldb
+    ports:
+      - "3306:3306"
+    volumes:
+      - spring-mysqldb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
+  spring-java-app:
+    build: 
+      context: ./dockerization/app
+    image: celeguim/spring-javaapp
+    container_name: spring-javaapp
+    ports:
+      - "3306:3306"
+    volumes:
+      - spring-javaapp:/usr/local/tomcat/webapps/
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
+volumes:
+  spring-mysqldb: {}
+  spring-javaapp: {}
