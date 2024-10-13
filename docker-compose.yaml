@@ -38,6 +38,19 @@ services:
     networks:
       - frontend
 
+  spring-memcached:
+    image: memcached
+    ports:
+      - "11211:11211"
+
+  spring-rabbitmq:
+    image: rabbitmq
+    ports:
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
 volumes:
   spring-mysqldb: {}
   spring-javaapp: {}

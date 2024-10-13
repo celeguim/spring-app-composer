@@ -11,17 +11,17 @@ import org.springframework.stereotype.Service;
 public class ConsumerServiceImpl implements ConsumerService {
 
     /**
-        The name of the exchange.
+     * The name of the exchange.
      */
     private static final String EXCHANGE_NAME = "messages";
 
     /**
-     *  The function that consumes messages from the broker(RabbitMQ)
+     * The function that consumes messages from the broker(RabbitMQ)
+     * 
      * @param data
      */
     @Override
-    @RabbitListener(bindings = @QueueBinding( value = @Queue(),
-            exchange = @Exchange(value = EXCHANGE_NAME, type = ExchangeTypes.FANOUT)))
+    @RabbitListener(bindings = @QueueBinding(value = @Queue(), exchange = @Exchange(value = EXCHANGE_NAME, type = ExchangeTypes.FANOUT)))
     public void consumerMessage(byte[] data) {
         String consumedMessage = new String(data);
         System.out.println(" [x] Consumed  '" + consumedMessage + "'");
