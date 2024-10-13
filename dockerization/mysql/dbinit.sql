@@ -38,7 +38,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (id, username, password)
-VALUES (1,'admin','$2a$11$0a7VdTr4rfCQqtsvpng6GuJnzUmQ7gZiHXgzGPgm5hkRa3avXgBLK');
+VALUES (1,'admin','$2a$11$puk1waWdhZULq/A8jWUEfeGD0We1B1qiozz0ZCa0aGQmS0cmVGe4S');
 
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role` (
