@@ -13,27 +13,12 @@ import java.util.concurrent.TimeoutException;
 @Service
 public class ProducerServiceImpl implements ProducerService {
 
-    /**
-     * The name of the Exchange
-     */
     private static final String EXCHANGE_NAME = "messages";
 
-    /**
-     * This method publishes a message
-     * 
-     * @param message
-     */
     @Override
     public String produceMessage(String message) {
         try {
             ConnectionFactory factory = new ConnectionFactory();
-            /**
-             * System.out.println("Rabitmq host: ::" + RabbitMqUtil.getRabbitMqHost());
-             * System.out.println("Rabitmq port: ::" + RabbitMqUtil.getRabbitMqPort());
-             * System.out.println("Rabitmq user: ::" + RabbitMqUtil.getRabbitMqUser());
-             * System.out.println("Rabitmq password: ::" +
-             * RabbitMqUtil.getRabbitMqPassword());
-             **/
             factory.setHost(RabbitMqUtil.getRabbitMqHost());
             factory.setPort(Integer.parseInt(RabbitMqUtil.getRabbitMqPort()));
             factory.setUsername(RabbitMqUtil.getRabbitMqUser());

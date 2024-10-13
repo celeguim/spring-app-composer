@@ -11,17 +11,15 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 
-/** {@author imrant}!*/
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    /** userRepository !*/
     private UserRepository userRepository;
+
     @Autowired
-    /** roleRepository !*/
     private RoleRepository roleRepository;
+
     @Autowired
-    /** bCryptPasswordEncoder !*/
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
@@ -35,13 +33,14 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(final String username) {
         return userRepository.findByUsername(username);
     }
-    
+
     @Override
     public List<User> getList() {
-    	return userRepository.findAll();
+        return userRepository.findAll();
     }
+
     @Override
-	public User findById(long id){
-    	return userRepository.findOne(id);
+    public User findById(long id) {
+        return userRepository.findOne(id);
     }
 }
